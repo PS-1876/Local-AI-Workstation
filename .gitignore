@@ -16,7 +16,10 @@ secrets*
 /state/
 /logs/
 /data/
-/models/
+# Only source metadata/examples are tracked under models/; weights stay external.
+/models/*
+!/models/*.json
+!/models/*.example
 /outputs/
 /backups/
 *.log

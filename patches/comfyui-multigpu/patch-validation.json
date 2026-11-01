@@ -1,0 +1,29 @@
+{
+  "upstream_commit": "37a73feda5804045e4f39d8c640905d62a2169d1",
+  "checks": [
+    {
+      "file": "p2p_registry.py",
+      "upstream_matches_local_head": true,
+      "git_apply_check_passed": true,
+      "staging_apply_passed": true,
+      "applied_matches_live_normalized_lines": true,
+      "applied_sha256": "ad6c414e90aa2760210c948e772ba4315418a3c27015498a6ab729465303eb06",
+      "live_sha256": "ad6c414e90aa2760210c948e772ba4315418a3c27015498a6ab729465303eb06",
+      "patch": "multigpu-01-portable-peer-query.patch",
+      "patch_sha256": "3140ea3530dc6a64542e3f2f03fb790bf21bb75a614810525ca7ad6986604986",
+      "syntax_parsed": true
+    },
+    {
+      "file": "__init__.py",
+      "upstream_matches_local_head": true,
+      "git_apply_check_passed": true,
+      "staging_apply_passed": true,
+      "applied_matches_live_normalized_lines": true,
+      "applied_sha256": "dac666389b6e6d4a8e68c69782a78f5d90a873de639d8acf45d740d6e0cf79d1",
+      "live_sha256": "dac666389b6e6d4a8e68c69782a78f5d90a873de639d8acf45d740d6e0cf79d1",
+      "patch": "multigpu-02-preserve-dlpack-storage.patch",
+      "patch_sha256": "3eb8e0093a4a8b49dd2873dfb8b735d1184cf5857d81fe90579b31aae605107f",
+      "syntax_parsed": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "observed_date": "2026-10-31",
+  "timezone": "America/Los_Angeles",
+  "python": "3.12.10",
+  "mcp": "1.30.0",
+  "platform": "native Windows",
+  "command": "python -m unittest discover -s tests -v",
+  "tests_run": 17,
+  "passed": 16,
+  "skipped": 1,
+  "failed": 0,
+  "skip_reason": "File-symlink fixture creation requires unavailable Windows privilege or Developer Mode.",
+  "real_stdio_protocol_test_passed": true,
+  "junction_and_hardlink_rejection_passed": true,
+  "concurrent_create_single_winner_passed": true,
+  "only_synthetic_temporary_files_used": true,
+  "live_hermes_or_host_tool_service_changed": false,
+  "files": {
+    "README.md": "6f37a464c6a0cb192671890fd12f5a067b436ab45d7ca2689f07929c9e229f5a",
+    "requirements.txt": "4fe75062c5d424bbc86a8cd58c63ab19aeffe4f0a0e100022252c8032e12ee5b",
+    "server.py": "86c86c3461f2ac0a651dd6ae03d8152936fbc2920b23fa4be86ea0d0cbc825b2",
+    "workspace.py": "b923270ce39c17564c3836a80b35225aebcf02c0653d83440271ac6c3957186f",
+    "tests/test_stdio.py": "4f9f22b408b28683688b8c579f54a19cbad5afb6156a078f531da1f64601d9a2",
+    "tests/test_workspace.py": "1975019b30e9002e981ab57732ad97ffb75fb083eeeaa7a336f6b6ae056565d9"
+  },
+  "limits": [
+    "Native Windows MCP SDK interoperability was tested; direct Hermes integration and WSL/container launch mapping were not.",
+    "The helper is not an OS sandbox and does not defend against malicious same-user filesystem races.",
+    "The direct SDK dependency is pinned, but a complete transitive lock and clean-machine reproduction are still pending."
+  ],
+  "independent_review": {
+    "reviewer_role": "separate review agent",
+    "actionable_findings_remaining": 0,
+    "additional_temp_only_checks_passed": [
+      "Competing destination introduced at rename remains unchanged; unpublished staging is cleaned.",
+      "Injected read-back failure leaves the new artifact, reports verification_failed, and a retry cannot overwrite it.",
+      "Replacing the root directory after Workspace construction reports root_changed without writing."
+    ]
+  }
+}

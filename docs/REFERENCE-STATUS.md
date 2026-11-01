@@ -2,7 +2,7 @@
 
 This reference build was inspected on **October 31, 2026, America/Los_Angeles**. The inspection was read-only: it enumerated hardware and requested service health or version information. It did not start or stop services, load models, run inference, submit media workflows, or reproduce an installation.
 
-The project is ready to document and develop in public. It is not yet a turnkey installation or a validated hardware compatibility matrix. A follow-up read-only [dependency inventory](DEPENDENCIES.md) now records source commits, runtime versions, local modifications, package inventories, and specific reproduction gaps. The [model guide](MODEL-GUIDE.md) separates candidate hardware tiers from tested profiles.
+The project is ready to document and develop in public. It is not yet a turnkey installation or a validated hardware compatibility matrix. A [dependency inventory](DEPENDENCIES.md) records the initial observations. Subsequent [source resolution](LOCAL-MODIFICATIONS.md) adds pinned artifacts, reusable patches/tools, and a [guided installation draft](INSTALLATION.md). Isolated source/protocol/fixture checks have passed; a clean full installation and real media tests remain pending. The [model guide](MODEL-GUIDE.md) separates candidate hardware tiers from tested profiles.
 
 ## Observed hardware and operating system
 
@@ -46,10 +46,10 @@ Earlier media and tool experiments likewise do not establish that a fresh agent 
 - [x] Record the GPU driver, WSL distribution/kernel, Podman version, sandbox image digest, and selected active runtime details in the dependency baseline.
 - [ ] Resolve the active gateway's separate Python runtime, local source changes, launch wrappers, and Podman socket/storage context into a reproducible recipe.
 - [ ] Complete adapter versions, verified dependency locks, acquisition sources, and compatible version combinations; observed package inventories are now available.
-- [ ] Identify the selected model artifact, digest, quantization, context configuration, download source, and applicable license.
+- [x] Identify matching selected model/projector sources, publisher digests, quantization, context and license declarations; fresh weight integrity and complete original conversion lineage remain pending.
 - [ ] Document all host-to-container storage mappings and verify artifact creation at the intended host destination.
 - [x] Publish a sanitized draft configuration example and structural schema.
-- [ ] Convert the configuration draft into a tested installation guide; no complete guide or installer is included yet.
+- [ ] Qualify the published installation draft on a separate clean environment; no complete tested guide or turnkey installer is included yet.
 - [ ] Define supported hardware and operating-system profiles using measured tests; no minimum hardware specification is validated yet.
 - [ ] Run a small, published end-to-end task suite with independent grading and bounded repair reporting.
 - [ ] Test local inference with external network access disabled after installation and model acquisition.

@@ -1,0 +1,62 @@
+{
+  "reviewed_date_local": "2026-10-31",
+  "timezone": "America/Los_Angeles",
+  "clean_install_verified": false,
+  "production_runtime_modified": false,
+  "large_model_files_freshly_hashed": false,
+  "real_inference_or_render_executed": false,
+  "checks": {
+    "general_model": {
+      "matching_manifest_and_upstream_artifacts": 2,
+      "fresh_small_manifest_hash_matches_api": true,
+      "fresh_large_artifact_hashes": false,
+      "import_executed": false
+    },
+    "media_sources": {
+      "pinned_entries": 21,
+      "revision_path_hash_size_records_independently_checked": 21,
+      "local_cache_revision_etag_size_matches": 7,
+      "additional_download_script_source_matches": 1,
+      "filename_size_only_matches": 13,
+      "workflow_qualified": false
+    },
+    "media_verifier": {
+      "synthetic_cli_cases_passed": 15,
+      "includes_same_size_corruption_and_path_escape": true,
+      "large_weight_reads": false
+    },
+    "comfyui_gguf": {
+      "source_files_matching_pinned_upstream_git_blobs": 16
+    },
+    "multigpu": {
+      "patches_with_clean_apply_and_reference_byte_match": 2,
+      "mock_behavior_checks_passed": 10,
+      "upstream_negative_controls_detected": 2,
+      "real_cuda_verified": false
+    },
+    "comfyui_mcp": {
+      "stdio_initialization_passed": true,
+      "six_tool_discovery_and_fake_http_routing_passed": true,
+      "submission_payload_checked": true,
+      "http_error_propagation_checked": true,
+      "live_render_submitted": false
+    },
+    "pytorch": {
+      "official_cp313_windows_cu130_wheel_records": 3,
+      "metadata_hashes_verified": 3,
+      "wheel_bytes_downloaded": false,
+      "dependency_abi_compatibility_source_reviewed": true,
+      "clean_install_verified": false
+    },
+    "windows_workspace_mcp": {
+      "skipped": 1,
+      "extra_independent_temp_edge_cases_passed": 3,
+      "skip_reason": "File symlink fixture creation needs unavailable Windows privilege",
+      "native_stdio_protocol_passed": true,
+      "passed": 16,
+      "tests_run": 17,
+      "failed": 0,
+      "full_hermes_wsl_integration_tested": false
+    }
+  }
+}

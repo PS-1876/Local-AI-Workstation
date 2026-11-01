@@ -35,7 +35,7 @@ A practical operating target is one general model at a time. Prefer a smaller mo
 
 The reference endpoint reports the local tag `qwen3.6-35b-heretic:latest`, GGUF format, `Q4_K_M`, approximately 34.7B parameters, a package size of 22,136,431,022 bytes, and a configured context of 65,536. Its metadata context limit is 262,144; that is not a validated operating target.
 
-The current API-reported model digest is `16a40cd6f9365c840caea50337d80cd741e26180d50a01f496bb9d3a559a413f`. Its exact public download source, base revision, transformation recipe, and applicable artifact license remain unresolved. The tag must therefore be documented as a local reference, not published as a working download command. A similarly named online model is not proof of identical weights.
+The current API-reported model digest is `16a40cd6f9365c840caea50337d80cd741e26180d50a01f496bb9d3a559a413f`. Follow-up investigation found a pinned public distribution whose model **and projector** hashes/sizes match the local manifest. [Source provenance](../models/general-heretic.json) records the evidence, publisher Apache-2.0 declarations, and reported Heretic transformation parameters. [The import candidate](HERETIC-IMPORT.md) uses both artifacts and the stock runtime renderer/parser. Fresh weight hashing and a clean import remain untested; exact original input revisions and the complete quantization recipe remain incomplete.
 
 The model was not loaded during the inventory; no fresh inference or memory-fit benchmark was performed. Earlier reference-machine tests remain historical observations. Standard-versus-Heretic task performance has not been compared in a controlled test.
 
@@ -59,4 +59,4 @@ ComfyUI is a first-class part of the full workstation. Its image and video profi
 
 A GPU that runs a language model is not automatically qualified for a particular video workflow. Measure one image workflow and one short video workflow, then test the transition from agent work to media generation and back. Heavy media work should follow an explicit save, resource-release, generation, verification, and resume sequence.
 
-Do not infer a video recommendation from an LLM fit table or download every installed reference model. The next manifest work selects the smallest set of components needed to reproduce the accepted image and video examples.
+Do not infer a video recommendation from an LLM fit table or download every installed reference model. The [pinned media catalog](MODEL-SOURCES.md) identifies 21 acquisition candidates, while the proposed first image/Wan bundles narrow the next workflow qualification. These bundles still need complete accepted graphs and measured hardware settings.

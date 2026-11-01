@@ -1,0 +1,5 @@
+# Observed NVIDIA CUDA 13.0 trio. Use the official cu130 index.
+# This constrains three GPU packages; it is not a full dependency lock.
+torch==2.12.1+cu130
+torchvision==0.27.1+cu130
+torchaudio==2.11.0+cu130

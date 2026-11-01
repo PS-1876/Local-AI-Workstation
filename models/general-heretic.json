@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-01T03:59:33.5862591Z",
+  "reference_date_local": "2026-10-31",
+  "purpose": "Sanitized source-resolution evidence and staged import candidate for the optional Heretic general-model profile.",
+  "status": "artifact_sources_identified_import_not_executed",
+  "completeness": "partial",
+  "is_install_lock": false,
+  "clean_install_verified": false,
+  "observed_local_model": {
+    "tag": "qwen3.6-35b-heretic:latest",
+    "local_alias_is_upstream_release_name": false,
+    "ollama_api_version": "0.40.13",
+    "format": "gguf",
+    "architecture": "qwen35moe",
+    "parameter_count": 34660610688,
+    "quantization": "Q4_K_M",
+    "api_reported_total_size_bytes": 22136431022,
+    "api_reported_manifest_digest": "sha256:16a40cd6f9365c840caea50337d80cd741e26180d50a01f496bb9d3a559a413f",
+    "manifest_evidence": {
+      "store_layout": "manifests-v2",
+      "fresh_manifest_sha256_computed": true,
+      "fresh_manifest_sha256": "16a40cd6f9365c840caea50337d80cd741e26180d50a01f496bb9d3a559a413f",
+      "matches_api_reported_digest": true,
+      "manifest_digest_is_weight_checksum": false,
+      "config_layer": {
+        "sha256": "ed1c8acc7166cc9644f305f453924049105f32ccc52487cc1a67701e53369351",
+        "size_bytes": 164
+      },
+      "template_layer": {
+        "sha256": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+        "size_bytes": 13,
+        "raw_content_exported": false
+      },
+      "parameters_layer": {
+        "sha256": "71534096db26ec4a09a031caa5620269bb8e1199908e80138b52f7a660c6e546",
+        "size_bytes": 93
+      }
+    },
+    "sampling_parameters_observed": {
+      "num_ctx": 65536,
+      "temperature": 0.6,
+      "top_k": 20,
+      "top_p": 0.95,
+      "min_p": 0
+    },
+    "maximum_context_from_model_metadata": 262144,
+    "context_note": "The reference configuration is 65536 tokens. Neither this setting nor architecture metadata proves another machine can run this context or that a particular offload arrangement fits.",
+    "capabilities_reported": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ],
+    "residency_changed_during_investigation": false
+  },
+  "artifact_source": {
+    "repository": "llmfan46/Qwen3.6-35B-A3B-uncensored-heretic-GGUF",
+    "revision": "f70be2db155a4192a59c559ece01572f3cd508ab",
+    "revision_pinned": true,
+    "api_metadata_url": "https://huggingface.co/api/models/llmfan46/Qwen3.6-35B-A3B-uncensored-heretic-GGUF/revision/f70be2db155a4192a59c559ece01572f3cd508ab?blobs=true",
+    "model_card_url": "https://huggingface.co/llmfan46/Qwen3.6-35B-A3B-uncensored-heretic-GGUF/blob/f70be2db155a4192a59c559ece01572f3cd508ab/README.md",
+    "license_declared_by_publisher": "apache-2.0",
+    "license_file_present_at_this_revision": false,
+    "artifacts": [
+      {
+        "role": "model",
+        "filename": "Qwen3.6-35B-A3B-uncensored-heretic-Q4_K_M.gguf",
+        "size_bytes": 21233608512,
+        "sha256": "b82f9f2155eb9c07139d48cc3a37880cf9d0edcca345ef6ad829b62941ccbb82",
+        "media_type": "application/vnd.ollama.image.model",
+        "quantization": "Q4_K_M",
+        "download_url": "https://huggingface.co/llmfan46/Qwen3.6-35B-A3B-uncensored-heretic-GGUF/resolve/f70be2db155a4192a59c559ece01572f3cd508ab/Qwen3.6-35B-A3B-uncensored-heretic-Q4_K_M.gguf",
+        "checksum_basis": "Pinned Hugging Face LFS SHA-256 and current local manifest declared digest agree.",
+        "local_file_size_matches": true,
+        "local_blob_filename_matches_declared_digest": true,
+        "local_manifest_digest_matches_upstream_lfs": true,
+        "fresh_local_content_sha256_computed": false
+      },
+      {
+        "role": "multimodal_projector",
+        "filename": "Qwen3.6-35B-A3B-uncensored-heretic-mmproj-BF16.gguf",
+        "size_bytes": 902822240,
+        "sha256": "1c625f05cd52e90abc76a5f756226c3a5fe279593379c22f6c6846c970a0cd18",
+        "media_type": "application/vnd.ollama.image.projector",
+        "quantization": "BF16",
+        "download_url": "https://huggingface.co/llmfan46/Qwen3.6-35B-A3B-uncensored-heretic-GGUF/resolve/f70be2db155a4192a59c559ece01572f3cd508ab/Qwen3.6-35B-A3B-uncensored-heretic-mmproj-BF16.gguf",
+        "checksum_basis": "Pinned Hugging Face LFS SHA-256 and current local manifest declared digest agree.",
+        "local_file_size_matches": true,
+        "local_blob_filename_matches_declared_digest": true,
+        "local_manifest_digest_matches_upstream_lfs": true,
+        "fresh_local_content_sha256_computed": false
+      }
+    ],
+    "total_artifact_size_bytes": 22136430752,
+    "provenance_conclusion": "Both current local manifest artifact digests and observed file sizes exactly match these immutable publisher artifact records. This identifies a matching public acquisition source; it does not prove historical download origin or freshly verify local weight bytes.",
+    "fresh_weight_integrity": {
+      "status": "not_recomputed",
+      "model_sha256_recomputed": false,
+      "projector_sha256_recomputed": false,
+      "reason": "A ComfyUI job was active; large local blob reads were deferred. No weight downloads or GPU residency changes were performed."
+    }
+  },
+  "source_lineage": {
+    "derivative_repository": "llmfan46/Qwen3.6-35B-A3B-uncensored-heretic",
+    "derivative_observed_revision": "dbfd9eb0cdc7c33fc970b06429f6e043b6851190",
+    "derivative_card_url": "https://huggingface.co/llmfan46/Qwen3.6-35B-A3B-uncensored-heretic/blob/dbfd9eb0cdc7c33fc970b06429f6e043b6851190/README.md",
+    "derivative_revision_used_for_quantization_verified": false,
+    "base_repository": "Qwen/Qwen3.6-35B-A3B",
+    "base_observed_revision": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+    "actual_base_revision_used_by_publisher_verified": false,
+    "lineage_basis": "Publisher model-card metadata, not an independently reproduced transformation.",
+    "transformation": {
+      "publisher_reported_tool": "Heretic",
+      "publisher_reported_version": "1.2.0",
+      "tool_repository": "https://github.com/p-e-w/heretic",
+      "version_tag_resolved_commit": "27097bfe8e60d5e65f0200785f1e96a52afcbc2a",
+      "tool_source_url": "https://github.com/p-e-w/heretic/tree/27097bfe8e60d5e65f0200785f1e96a52afcbc2a",
+      "publisher_tool_binary_or_build_independently_verified": false,
+      "publisher_reported_method": "Variant of Magnitude-Preserving Orthogonal Ablation",
+      "publisher_reported_parameters": {
+        "direction_index": 19.93,
+        "attn.out_proj.max_weight": 1.49,
+        "attn.out_proj.max_weight_position": 23.45,
+        "attn.out_proj.min_weight": 1.08,
+        "attn.out_proj.min_weight_distance": 16.54,
+        "mlp.down_proj.max_weight": 1.46,
+        "mlp.down_proj.max_weight_position": 28.05,
+        "mlp.down_proj.min_weight": 1.27,
+        "mlp.down_proj.min_weight_distance": 18.79,
+        "attn.o_proj.max_weight": 1.47,
+        "attn.o_proj.max_weight_position": 24.35,
+        "attn.o_proj.min_weight": 0.07,
+        "attn.o_proj.min_weight_distance": 22.58
+      },
+      "transformation_reproduced_locally": false,
+      "quantizer_version_or_commit": null,
+      "quantization_recipe_complete": false
+    },
+    "licenses": {
+      "quantized_model_declared": "apache-2.0",
+      "derivative_model_declared": "apache-2.0",
+      "base_model_declared": "apache-2.0",
+      "base_license_url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/995ad96eacd98c81ed38be0c5b274b04031597b0/LICENSE",
+      "base_license_text_observed_contains_apache_2_0": true,
+      "heretic_tool_license_github_spdx": "AGPL-3.0",
+      "heretic_tool_license_url": "https://github.com/p-e-w/heretic/blob/27097bfe8e60d5e65f0200785f1e96a52afcbc2a/LICENSE",
+      "license_scope_note": "Model license declarations and the transformation tool's software license are recorded separately. No model weights or tool source are included in this evidence."
+    }
+  },
+  "portable_chat_configuration": {
+    "renderer": "qwen3.5",
+    "parser": "qwen3.5",
+    "template_source": "renderer_parser",
+    "local_stock_comparison_tag": "qwen3.6:35b-a3b",
+    "comparison_scope": "Existing local stock model metadata, not the current mutable remote tag.",
+    "stock_and_custom_template_equal": true,
+    "template_utf8_size_bytes": 13,
+    "template_sha256": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+    "raw_template_or_system_exported": false,
+    "runtime_source_version": "0.40.13",
+    "runtime_source_commit": "04088e7c9d41cba5d33bafbf788d87a465c79d5b",
+    "renderer_source_url": "https://github.com/ollama/ollama/blob/04088e7c9d41cba5d33bafbf788d87a465c79d5b/model/renderers/qwen35.go",
+    "parser_source_url": "https://github.com/ollama/ollama/blob/04088e7c9d41cba5d33bafbf788d87a465c79d5b/model/parsers/qwen35.go",
+    "modelfile_parser_source_url": "https://github.com/ollama/ollama/blob/04088e7c9d41cba5d33bafbf788d87a465c79d5b/parser/parser.go",
+    "import_source_url": "https://github.com/ollama/ollama/blob/04088e7c9d41cba5d33bafbf788d87a465c79d5b/server/create.go",
+    "source_checks": {
+      "multiple_from_files_merge_in_create_request": true,
+      "renderer_parser_requires_commands_supported_in_pinned_parser": true,
+      "projector_gguf_import_gets_projector_layer": true
+    },
+    "note": "The candidate uses Ollama's stock renderer/parser rather than carrying private prompt content. The candidate still requires a clean import and behavioral qualification."
+  },
+  "staged_import": {
+    "execution_status": "not_executed",
+    "target_tag": "laiw-qwen36-heretic:import-test",
+    "isolation_scope": "New staging directory and new local tag; existing models and the current alias must be preserved. Prefer a clean test workstation for qualification.",
+    "required_reference_runtime_version": "0.40.13",
+    "requires_directive_note": "REQUIRES expresses a minimum. For the first reproducibility test, separately verify the installed runtime equals 0.40.13.",
+    "modelfile_candidate": "FROM ./Qwen3.6-35B-A3B-uncensored-heretic-Q4_K_M.gguf\nFROM ./Qwen3.6-35B-A3B-uncensored-heretic-mmproj-BF16.gguf\nRENDERER qwen3.5\nPARSER qwen3.5\nREQUIRES 0.40.13\nPARAMETER num_ctx 65536\nPARAMETER temperature 0.6\nPARAMETER top_k 20\nPARAMETER top_p 0.95\nPARAMETER min_p 0\n",
+    "artifact_hash_check_candidate": "Get-FileHash -Algorithm SHA256 -LiteralPath '.\\Qwen3.6-35B-A3B-uncensored-heretic-Q4_K_M.gguf'; Get-FileHash -Algorithm SHA256 -LiteralPath '.\\Qwen3.6-35B-A3B-uncensored-heretic-mmproj-BF16.gguf'",
+    "import_command_candidate": "ollama create laiw-qwen36-heretic:import-test -f .\\Modelfile",
+    "steps": [
+      "Use a new empty staging directory and verify sufficient disk space. Refuse an already-existing target tag; do not overwrite the reference alias.",
+      "Record the selected Ollama endpoint and verify the runtime is 0.40.13 before qualification. Network topology and bindings require separate qualification.",
+      "Acquire only the two artifacts from the immutable download URLs above. Retain the pinned model-card and base-license references with the acquisition record.",
+      "Check both byte counts and independently compute SHA-256 on the acquired files. Abort on any mismatch before import.",
+      "Save modelfile_candidate as Modelfile beside both files. Both FROM entries are required to preserve the vision projector. The 65536 context reproduces the observed reference setting and must be lowered if hardware qualification requires it.",
+      "Run import_command_candidate for the new test tag. This step has not been executed in this investigation.",
+      "Inspect the new tag with the read-only show API and its small manifest. Confirm model and projector layer digests and sizes, renderer/parser, sampling parameters, architecture, and reported completion/vision/tools/thinking capabilities.",
+      "Expect a different overall manifest digest if parameters, runtime metadata, requires, or license fields differ. Compare the two artifact digests to establish identical weights and projector.",
+      "Only during a planned free GPU window, qualify chat, thinking parsing, tool calls, vision, context/VRAM behavior, and the intended Open WebUI integration using generic test inputs.",
+      "Keep the reference tag untouched until the candidate passes qualification. Record results and any runtime or parameter changes in a new evidence record."
+    ],
+    "qualification_checks_pending": [
+      "Fresh SHA-256 checks of existing local model and projector bytes",
+      "Downloaded-artifact integrity on a new installation",
+      "Clean import with both FROM components",
+      "Post-import artifact and portable renderer/parser verification",
+      "Chat, tool, thinking, and vision behavior",
+      "Context and VRAM suitability for each supported GPU tier",
+      "Open WebUI integration on the new installation"
+    ]
+  },
+  "remaining_gaps": [
+    "The pinned public artifacts provide a concrete acquisition route, but no clean installation has yet been completed.",
+    "The publisher's exact base revision and derivative revision used for quantization are not established.",
+    "The quantization tool revision, complete conversion recipe, and any extra transformation inputs are not established; from-base bit-for-bit regeneration is not claimed.",
+    "Local large blob content has not been freshly hashed; only the small manifest was freshly hashed and artifact sizes were checked.",
+    "The license declarations come from publisher metadata; standalone LICENSE files were not present in the pinned derivative or GGUF file listings.",
+    "Network topology and bindings require qualification; no network isolation claim is made."
+  ]
+}

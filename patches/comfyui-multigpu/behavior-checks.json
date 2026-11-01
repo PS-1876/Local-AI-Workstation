@@ -1,0 +1,138 @@
+{
+  "scope": "CPU-only mock regression checks; no torch import, CUDA calls, ComfyUI import, service changes, or model jobs.",
+  "patched_peer_checks": [
+    {
+      "name": "same device returns true without native query",
+      "passed": true
+    },
+    {
+      "name": "cross-device result comes from documented torch API",
+      "passed": true
+    },
+    {
+      "name": "repeated pair uses cache",
+      "passed": true
+    },
+    {
+      "name": "reverse pair is independently queried",
+      "passed": true
+    },
+    {
+      "name": "clear_cache permits a new query",
+      "passed": true
+    },
+    {
+      "name": "unavailable CUDA returns false without peer query",
+      "passed": true
+    }
+  ],
+  "patched_dlpack_cases": [
+    {
+      "keyword_tensor": false,
+      "tensor_device": 1,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": true,
+      "exception_type": null,
+      "transfer_count": 0,
+      "original_storage_value": 73,
+      "guard_devices": [
+        [
+          "cuda",
+          1
+        ]
+      ],
+      "patch_idempotent": true
+    },
+    {
+      "keyword_tensor": true,
+      "tensor_device": 1,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": true,
+      "exception_type": null,
+      "transfer_count": 0,
+      "original_storage_value": 73,
+      "guard_devices": [
+        [
+          "cuda",
+          1
+        ]
+      ],
+      "patch_idempotent": true
+    },
+    {
+      "keyword_tensor": false,
+      "tensor_device": 0,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": true,
+      "exception_type": null,
+      "transfer_count": 0,
+      "original_storage_value": 73,
+      "guard_devices": [
+        [
+          "cuda",
+          0
+        ]
+      ],
+      "patch_idempotent": true
+    },
+    {
+      "keyword_tensor": true,
+      "tensor_device": 0,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": true,
+      "exception_type": null,
+      "transfer_count": 0,
+      "original_storage_value": 73,
+      "guard_devices": [
+        [
+          "cuda",
+          0
+        ]
+      ],
+      "patch_idempotent": true
+    }
+  ],
+  "upstream_negative_controls": [
+    {
+      "keyword_tensor": false,
+      "tensor_device": 1,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": false,
+      "exception_type": null,
+      "transfer_count": 2,
+      "original_storage_value": 0,
+      "guard_devices": [
+        [
+          "cuda",
+          0
+        ]
+      ],
+      "patch_idempotent": true
+    },
+    {
+      "keyword_tensor": true,
+      "tensor_device": 1,
+      "mock_execution_device": 0,
+      "mock_peer_access": false,
+      "passed": false,
+      "exception_type": "TypeError",
+      "transfer_count": 2,
+      "original_storage_value": 0,
+      "guard_devices": [
+        [
+          "cuda",
+          0
+        ]
+      ],
+      "patch_idempotent": true
+    }
+  ],
+  "patched_pass_count": 10,
+  "patched_check_count": 10,
+  "negative_control_regressions_detected": true
+}

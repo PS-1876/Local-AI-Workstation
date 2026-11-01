@@ -14,6 +14,8 @@ Exit condition: the documents are available in the repository, their internal li
 
 Status: in progress. A [sanitized baseline](DEPENDENCIES.md), package inventories, source fingerprints, [model guide](MODEL-GUIDE.md), and [draft configuration contract](CONFIGURATION.md) are published. The baseline is an observation, not a verified installation lock.
 
+Source-resolution progress: the custom general model/projector now have matching pinned artifact references; 21 media candidates have publisher hashes/revisions; the GGUF source pin is identified; MultiGPU patches and portable MCP source are packaged. [Packaging decisions](LOCAL-MODIFICATIONS.md) exclude private interceptors/wrappers/coordinator and explain the ComfyUI disk-environment discrepancy. Fresh artifact checks, full dependency locks, selected workflow fixtures, and clean qualification remain.
+
 - Resolve the dependencies used by Core, Agent, and the selected image and video examples.
 - Record versions, image/model digests, custom-node commits, installation sources, licenses, and compatibility constraints.
 - Extract configuration into sanitized templates with configurable paths and ports.
@@ -24,6 +26,8 @@ Status: in progress. A [sanitized baseline](DEPENDENCIES.md), package inventorie
 Exit condition: another contributor can identify every required component and every user-specific input without access to private machine configuration.
 
 ## Milestone 2: Guided installation and independent checks
+
+Status: a [guided draft](INSTALLATION.md), [Heretic import candidate](HERETIC-IMPORT.md), and [clean-source Hermes candidate](HERMES-INSTALLATION-CANDIDATE.md) are published for review. Small integrity/protocol/patch checks are implemented. No separate clean full installation is claimed.
 
 - Write a step-by-step Core and Agent installation procedure.
 - Provide sample tasks and external checkers for local document work, a host-visible coding artifact, and fresh-session project continuity.

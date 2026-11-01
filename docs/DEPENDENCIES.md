@@ -4,6 +4,8 @@ Observed October 31, 2026, America/Los_Angeles. This read-only inventory records
 
 The [machine-readable baseline](../inventory/reference-2026-10-31.json) is an observed snapshot, not a dependency lock or installer manifest. It records concrete versions and unresolved items without claiming that this combination has been installed successfully on a clean machine.
 
+**Source-resolution follow-up:** [Local modifications](LOCAL-MODIFICATIONS.md) now explains the patches and packaging decisions, [model sources](MODEL-SOURCES.md) provides pinned artifacts, and the [installation draft](INSTALLATION.md) gives an actionable candidate procedure. The original JSON snapshots remain historical observations; the follow-up supersedes the unresolved-source labels where explicitly stated.
+
 ## Core platform
 
 | Component | Observed baseline | Reproduction status |
@@ -34,7 +36,7 @@ The installed Open WebUI distribution identifies its license as **Open WebUI Lic
 
 The base sandbox image is `ghcr.io/nvidia/nemoclaw/hermes-sandbox@sha256:afe428ec04ff4cbc3c397756eb44224bd5212a4f7044928bed855a9f093761de`. The digest identifies the image, not the current modified container environment. The active source and launcher are not covered by a container mount, so their later changes must be captured separately.
 
-The source tree for [Hermes](https://github.com/NousResearch/hermes-agent) has a modified `tools/file_tools.py`. The observed [NemoClaw](https://github.com/NVIDIA/NemoClaw) checkout requires Node at least 22.19.0, but no native Node executable was found on the default Linux path. An `npm` version response alone did not resolve Windows-versus-Linux runtime provenance.
+The source tree for [Hermes](https://github.com/NousResearch/hermes-agent) has a modified `tools/file_tools.py` and a required untracked routing helper. The portable candidate excludes that interceptor and uses explicit host tools. Its managed Python acquisition and the rootless Podman account/socket context have now been traced; see the [Hermes candidate](HERMES-INSTALLATION-CANDIDATE.md). The observed [NemoClaw](https://github.com/NVIDIA/NemoClaw) checkout requires Node at least 22.19.0, but no native Node executable was found on the default Linux path. Installed custom wrappers are not copied into the clean-source candidate.
 
 Hermes has a `uv.lock` with 328 package records; NemoClaw has a version-3 package lock with 613 entries. Their hashes are recorded in the baseline. Neither lock has been shown to recreate the active interpreter, local wrappers, or current tool environment. The deployment guide must reconcile those layers before automating them.
 
@@ -42,7 +44,7 @@ Hermes has a `uv.lock` with 328 package records; NemoClaw has a version-3 packag
 
 The selected local reference is `qwen3.6-35b-heretic:latest`, a Q4_K_M GGUF with approximately 34.7B parameters and a reported 22.14 GB package size. Configuration specifies 65,536 context tokens. The metadata maximum of 262,144 is not a validated target.
 
-The API reported no resident models during this inventory. The custom model's API digest and local blob metadata are recorded, but a public acquisition source, exact base revision, transformation recipe, and applicable artifact license have not been established. Do not convert the local tag into a public download instruction. See the [model guide](MODEL-GUIDE.md) for standard-model candidates and the Heretic profile policy.
+The API reported no resident models during the initial inventory. The follow-up traced both the model and vision-projector manifest digests/sizes to a pinned public distribution and recorded publisher license/transformation declarations. See [exact provenance](../models/general-heretic.json) and [the import candidate](HERETIC-IMPORT.md). Fresh large-file integrity, a clean import, complete from-base conversion provenance, and runtime qualification remain separate. Do not treat the private alias as an upstream pull name.
 
 ## ComfyUI and media
 
@@ -52,18 +54,18 @@ ComfyUI is a required part of the **full** workstation. Smaller installation pro
 | --- | --- | --- |
 | ComfyUI | 0.40.0; commit `3541246a9c997f4b8c32f9f88f3c985d02021c79` | Tracked source clean; active virtual environment identified |
 | Python and PyTorch | Python 3.13.12; PyTorch 2.12.1+cu130 | Separate environment from Open WebUI |
-| ComfyUI-MultiGPU | 2.6.4; commit `37a73feda5804045e4f39d8c640905d62a2169d1` | Two tracked source files modified |
-| ComfyUI-GGUF | Source version 2.0.0 | No Git checkout; exact archive/revision provenance unresolved |
+| ComfyUI-MultiGPU | 2.6.4; commit `37a73feda5804045e4f39d8c640905d62a2169d1` | Two opt-in patches packaged; clean application and 10 mocked behavior checks pass |
+| ComfyUI-GGUF | Commit `6ea2651e7df66d7585f6ffee804b20e92fb38b8a` | All 16 non-cache files match upstream Git blobs; historical download method unknown |
 | Render-Coordinator | Local source without Git metadata | Source packaging, provenance, and licensing unresolved |
-| ComfyUI MCP bridge | Python 3.12.10; `mcp==1.30.0`; `httpx==0.28.1` | Local code and stored dependency pins; no clean-install or live handshake test in this inventory |
+| ComfyUI MCP bridge | Python 3.12.10; `mcp==1.30.0`; `httpx==0.28.1` | Portable source packaged; six-tool protocol test passes against a fake service; live clean setup pending |
 
 Sources recorded in local metadata include [ComfyUI](https://github.com/Comfy-Org/ComfyUI), [MultiGPU](https://github.com/pollockjj/ComfyUI-MultiGPU), and [GGUF](https://github.com/city96/ComfyUI-GGUF). A Git origin or a version string does not prove that local modified files equal an upstream release.
 
 MultiGPU's modified files are `__init__.py` and `p2p_registry.py`. Their source fingerprints are recorded without copying the code. Current ComfyUI launch arguments do not include the historically used `--cuda-device all`; two devices were nevertheless enumerated by the endpoint. Actual workload placement needs a new task-level check.
 
-The ComfyUI and bridge environments pass `pip check`. However, five declarations in ComfyUI's source requirements have no matching installed distribution metadata: frontend package, workflow templates, embedded docs, comfy-kitchen, and comfy-aimdo. This discrepancy must be explained before deriving an installation lock. It is not evidence by itself that the running application is broken.
+The ComfyUI and bridge environments pass `pip check`. However, five declarations in ComfyUI's source requirements have no matching installed distribution metadata. Follow-up fresh module lookup confirms missing frontend/templates/docs/aimdo modules and an incomplete kitchen namespace. This is an unresolved restart/reproduction discrepancy despite current service health. The [follow-up](LOCAL-MODIFICATIONS.md#comfyui-restart-discrepancy) explains why a new environment is required for qualification.
 
-The [media file inventory](../inventory/media-model-files.json) lists 21 targeted model files with byte sizes, including Qwen Image, Wan, LTX, encoders, and VAEs. Presence and filenames do not prove source, integrity, licensing, or workflow compatibility. The full release must select and qualify one redistributable image workflow and one video workflow with the complete dependency set for each.
+The [media file inventory](../inventory/media-model-files.json) lists 21 targeted model files with byte sizes. The [follow-up catalog](../models/media-sources.json) adds pinned source candidates and publisher hashes; it distinguishes seven cache matches, one download-script source, and thirteen filename/size matches. Fresh local hashes and complete workflow compatibility are not established. The full release must qualify one image and one video fixture with their complete dependency sets.
 
 ## Keep environments separate
 
@@ -73,9 +75,9 @@ A future installer should create component-specific environments rather than com
 
 ## Remaining work before a reproducible recipe
 
-1. Review and package the local Hermes, MultiGPU, launcher, coordinator, and bridge changes with appropriate source attribution.
+1. Qualify the packaged MultiGPU/bridge changes and explicit workspace tools; keep excluded private interceptors/wrappers/coordinator out of the portable setup.
 2. Resolve the active container connection, storage, Python, Node, mount, and inference-routing recipe.
-3. Trace exact model downloads, digests, projectors, licenses, and transformation provenance.
+3. Perform fresh artifact integrity/import checks and finish model lineage/terms review for the selected profiles.
 4. Explain source-versus-installed dependency differences and create verified, platform-specific locks.
 5. Define host/container configuration and actual local network boundaries; local URL checks do not prove isolation.
 6. Choose synthetic or licensed image/video fixtures and independent output checks.

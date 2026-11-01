@@ -1,6 +1,6 @@
 # Build prerequisites
 
-This checklist defines the information needed before a reproducible installation can be offered. It is not yet a complete installation guide or a hardware shopping list. The [dependency inventory](DEPENDENCIES.md) now records observed versions and unresolved local changes; the [model guide](MODEL-GUIDE.md) provides initial GPU-tier candidates to qualify.
+This checklist defines the information needed before a reproducible installation can be offered. The [guided draft](INSTALLATION.md) now supplies concrete setup candidates and checks; it is not yet a qualified clean-machine recipe or a hardware shopping list. The [dependency inventory](DEPENDENCIES.md) and [local modifications](LOCAL-MODIFICATIONS.md) distinguish observed versions from reviewed packaging decisions; the [model guide](MODEL-GUIDE.md) provides initial GPU-tier candidates to qualify.
 
 ## Reference hardware
 
@@ -44,4 +44,4 @@ The standard local profile should not ask for cloud AI API keys. Advanced networ
 - [ ] Provide synthetic or licensed sample data and independent checks.
 - [ ] Complete a separate clean installation using the guide alone.
 
-Until those checks are complete, readers should use this repository for project design and progress tracking. There is no supported one-command installation yet.
+Until those checks are complete, use the guided draft for controlled technical review and separate test installations. There is no supported one-command installation yet.

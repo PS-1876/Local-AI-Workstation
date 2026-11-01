@@ -169,4 +169,4 @@ The repository is the proposed source of truth for public product requirements. 
 
 ## 12. Immediate next milestone
 
-Resolve the gaps in the sanitized dependency baseline and write a guided Core-plus-Agent installation procedure. Complete image/video integration and GPU transitions for the full setup, then prove that procedure outside the existing configured workstation and automate it. See the [roadmap](ROADMAP.md) for the work items and exit conditions.
+Qualify the published [installation draft](INSTALLATION.md), pinned model acquisition sources, reviewed patches, and portable tools in a separate environment. Complete host routing, UI/agent integration, accepted image/video graphs, and GPU transitions for the full setup. Prove the procedure outside the existing configured workstation before automating it. See the [roadmap](ROADMAP.md) for work items and exit conditions.
