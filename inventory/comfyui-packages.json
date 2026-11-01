@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "observed_date_local": "2026-10-31",
+  "timezone": "America/Los_Angeles",
+  "installation_lock": false,
+  "clean_install_verified": false,
+  "component": "ComfyUI inspected Python environment",
+  "python_version": "3.13.12",
+  "scope": "Selected installed-package metadata only; this is not the complete environment.",
+  "packages": [
+    {
+      "name": "torch",
+      "version": "2.12.1+cu130"
+    },
+    {
+      "name": "torchvision",
+      "version": "0.27.1+cu130"
+    },
+    {
+      "name": "torchaudio",
+      "version": "2.11.0+cu130"
+    },
+    {
+      "name": "transformers",
+      "version": "5.16.1"
+    },
+    {
+      "name": "tokenizers",
+      "version": "0.23.2"
+    },
+    {
+      "name": "safetensors",
+      "version": "0.8.0"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.2"
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1"
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.3"
+    },
+    {
+      "name": "comfy-angle",
+      "version": "0.1.1"
+    },
+    {
+      "name": "torchsde",
+      "version": "0.2.6"
+    },
+    {
+      "name": "av",
+      "version": "18.1.0"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5"
+    },
+    {
+      "name": "huggingface-hub",
+      "version": "1.30.0"
+    },
+    {
+      "name": "gguf",
+      "version": "0.19.0"
+    },
+    {
+      "name": "sentencepiece",
+      "version": "0.2.2"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.2"
+    }
+  ],
+  "selected_distributions_without_metadata": [
+    "comfyui-frontend-package",
+    "comfyui-workflow-templates",
+    "comfyui-embedded-docs",
+    "comfy-kitchen",
+    "comfy-aimdo"
+  ],
+  "source_declared_requirements": [
+    "comfyui-frontend-package==1.55.17",
+    "comfyui-workflow-templates==0.11.82",
+    "comfyui-embedded-docs==0.5.14",
+    "torch",
+    "torchsde",
+    "torchvision",
+    "numpy>=1.25.0",
+    "einops",
+    "transformers>=4.50.3",
+    "tokenizers>=0.13.3",
+    "sentencepiece",
+    "safetensors>=0.4.2",
+    "aiohttp>=3.11.8",
+    "yarl>=1.18.0",
+    "pyyaml",
+    "Pillow",
+    "scipy",
+    "tqdm",
+    "psutil",
+    "alembic",
+    "SQLAlchemy>=2.0.0",
+    "filelock",
+    "av>=17.0.0",
+    "comfy-kitchen==0.2.37",
+    "comfy-aimdo==0.5.6",
+    "requests",
+    "simpleeval>=1.0.0",
+    "blake3",
+    "kornia>=0.7.1",
+    "spandrel",
+    "pydantic~=2.0",
+    "pydantic-settings~=2.0",
+    "PyOpenGL>=3.1.8",
+    "comfy-angle"
+  ],
+  "source_required_distributions_missing_metadata": [
+    "comfyui-frontend-package==1.55.17",
+    "comfyui-workflow-templates==0.11.82",
+    "comfyui-embedded-docs==0.5.14",
+    "comfy-kitchen==0.2.37",
+    "comfy-aimdo==0.5.6"
+  ],
+  "artifact_sources_and_hashes_included": false,
+  "pip_check_passed": true,
+  "pip_check_scope": "Installed distribution metadata only; does not establish all source requirements or workflow compatibility."
+}

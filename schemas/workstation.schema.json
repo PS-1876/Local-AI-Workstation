@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local AI Workstation configuration draft",
+  "description": "Design contract only. No installer consumes this schema yet; null selections block a runnable profile.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "installationProfile", "paths", "hostServiceUrls", "generalModel", "media", "operation"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schemaVersion": {"const": "0.1"},
+    "status": {"const": "design-draft"},
+    "installationProfile": {"enum": ["full", "core", "core-agent"]},
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["programRoot", "modelsRoot", "workspaceRoot", "outputsRoot", "stateRoot"],
+      "properties": {
+        "programRoot": {"$ref": "#/$defs/windowsPath"},
+        "modelsRoot": {"$ref": "#/$defs/windowsPath"},
+        "workspaceRoot": {"$ref": "#/$defs/windowsPath"},
+        "outputsRoot": {"$ref": "#/$defs/windowsPath"},
+        "stateRoot": {"$ref": "#/$defs/windowsPath"}
+      }
+    },
+    "hostServiceUrls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ollama", "openWebUI", "hermes", "comfyUI"],
+      "properties": {
+        "ollama": {"$ref": "#/$defs/hostLoopbackUrl"},
+        "openWebUI": {"$ref": "#/$defs/hostLoopbackUrl"},
+        "hermes": {"$ref": "#/$defs/hostLoopbackUrl"},
+        "comfyUI": {"$ref": "#/$defs/hostLoopbackUrl"}
+      }
+    },
+    "generalModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["familyPreference", "variant", "tag", "digest", "contextTokens", "maxConcurrentRequests"],
+      "properties": {
+        "familyPreference": {"const": "qwen"},
+        "variant": {"enum": ["standard", "heretic"]},
+        "tag": {"type": ["string", "null"], "minLength": 1},
+        "digest": {"type": ["string", "null"], "pattern": "^(sha256:)?[a-f0-9]{64}$"},
+        "contextTokens": {"type": ["integer", "null"], "minimum": 1},
+        "maxConcurrentRequests": {"const": 1}
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["imageWorkflowProfile", "videoWorkflowProfile"],
+      "properties": {
+        "imageWorkflowProfile": {"type": ["string", "null"], "minLength": 1},
+        "videoWorkflowProfile": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inferencePolicy", "heavyGpuWorkloads", "startAtSignIn", "externalPublishing"],
+      "properties": {
+        "inferencePolicy": {"const": "local-only"},
+        "heavyGpuWorkloads": {"const": "sequential"},
+        "startAtSignIn": {"type": "boolean"},
+        "externalPublishing": {"const": "manual"}
+      }
+    }
+  },
+  "$defs": {
+    "windowsPath": {"type": "string", "pattern": "^[A-Za-z]:[\\\\/].+"},
+    "hostLoopbackUrl": {"type": "string", "pattern": "^http://(127\\.0\\.0\\.1|localhost|\\[::1\\]):[1-9][0-9]{0,4}/?$"}
+  }
+}

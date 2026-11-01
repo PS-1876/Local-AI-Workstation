@@ -1,8 +1,8 @@
 # Local AI Workstation architecture
 
-The workstation combines a Windows host, local model serving, an agent runtime, local tools, and optional media workflows. This is the logical architecture for the reference build. It documents the intended boundaries and the historically observed integration; it is not a complete deployment specification.
+The full workstation combines a Windows host, local model serving, an agent runtime, local tools, and ComfyUI image/video workflows. This is the logical architecture for the reference build. It documents intended boundaries and observed components; it is not a complete deployment specification. Smaller profiles may omit media, but the full release requires it.
 
-The [reference status](REFERENCE-STATUS.md) distinguishes current endpoint observations from earlier local results and work still to validate.
+The [reference status](REFERENCE-STATUS.md) and [dependency baseline](DEPENDENCIES.md) distinguish current endpoint/source observations from earlier task results and work still to validate.
 
 ## Components and boundaries
 
@@ -11,16 +11,16 @@ The [reference status](REFERENCE-STATUS.md) distinguishes current endpoint obser
 | Windows host | Runs the workstation, exposes local storage, and provides the operator's desktop | Hardware and operating system inspected on October 31, 2026 |
 | Open WebUI | Local interface to model and agent services | Health endpoint reached; configured integrations require separate validation |
 | Ollama | Serves the selected local language model | Version endpoint reached; inference and current model residency were not tested in this baseline |
-| Hermes Agent | Executes bounded tasks using a language model and tools | Health endpoint reached; prior project notes describe the agent runtime inside WSL and Podman |
-| NemoClaw and OpenShell integration | Connects the historical Hermes deployment to its local inference and execution environment | Historical deployment detail; exact current configuration and boundaries remain to inventory |
+| Hermes Agent | Executes bounded tasks using a language model and tools | Health, source, and runtime inventoried inside WSL/Podman; local changes and routing need reproduction |
+| NemoClaw and OpenShell integration | Connects the Hermes deployment to its local inference and execution environment | Source/version metadata captured; complete deployment and network boundaries still to qualify |
 | Local tools and MCP adapters | Connect approved workflows to files and services through explicit interfaces | Availability and permissions must be verified per adapter and client |
-| ComfyUI | Optional local image, video, and audio workflow execution | System statistics endpoint reached and two CUDA devices enumerated |
+| ComfyUI | Local image and video workflow execution in the full workstation | Runtime, source, selected nodes, and model-file metadata inventoried; full reproduction pending |
 | Dedicated utilities | Optional transcription, speech, OCR, embedding, and media inspection functions | Inventory, dependencies, and individual task validation remain to publish |
 | Project records and outputs | Store task evidence, project decisions, and generated artifacts | A repository-wide storage and retrieval contract remains to define |
 
 ## Logical architecture
 
-The diagram is a proposed documentation model based on the historical stack. A service being reachable does not verify every connecting arrow. Model calls, tool execution, storage mappings, and client integrations each need an end-to-end test.
+The diagram is a proposed logical model based on the reference stack. A service being reachable does not verify every connecting arrow. Model calls, tool execution, storage mappings, and client integrations each need an end-to-end test.
 
 ```mermaid
 flowchart TD
@@ -29,12 +29,12 @@ flowchart TD
         UI[Open WebUI<br/>health reachable]
         Model[Ollama<br/>version endpoint reachable]
         Tools[Local tools and MCP adapters<br/>per-adapter validation pending]
-        Media[ComfyUI optional<br/>system statistics reachable]
+        Media[ComfyUI images and videos<br/>required for full profile]
         Utils[Dedicated utilities optional<br/>inventory pending]
         Records[Project records and artifacts<br/>storage contract planned]
-        subgraph Linux[WSL and Podman<br/>historical deployment topology]
+        subgraph Linux[WSL and Podman<br/>runtime inventory captured]
             Agent[Hermes Agent<br/>health reachable]
-            Integration[NemoClaw and OpenShell integration<br/>configuration review pending]
+            Integration[NemoClaw and OpenShell integration<br/>deployment recipe pending]
         end
     end
     User --> UI

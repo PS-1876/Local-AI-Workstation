@@ -2,7 +2,7 @@
 
 This reference build was inspected on **October 31, 2026, America/Los_Angeles**. The inspection was read-only: it enumerated hardware and requested service health or version information. It did not start or stop services, load models, run inference, submit media workflows, or reproduce an installation.
 
-The project is ready to document and develop in public. It is not yet a turnkey installation or a validated hardware compatibility matrix.
+The project is ready to document and develop in public. It is not yet a turnkey installation or a validated hardware compatibility matrix. A follow-up read-only [dependency inventory](DEPENDENCIES.md) now records source commits, runtime versions, local modifications, package inventories, and specific reproduction gaps. The [model guide](MODEL-GUIDE.md) separates candidate hardware tiers from tested profiles.
 
 ## Observed hardware and operating system
 
@@ -25,7 +25,7 @@ Each request used a five-second timeout. All four requests returned HTTP 200.
 | Service | Local endpoint inspected | Reported result |
 |---|---|---|
 | Ollama | `http://127.0.0.1:11434/api/version` | Version `0.40.13` |
-| Open WebUI | `http://127.0.0.1:8080/health` | `status: true`; application version not collected |
+| Open WebUI | `http://127.0.0.1:8080/health` | `status: true`; follow-up application/package inspection reports `0.11.4` |
 | Hermes | `http://127.0.0.1:8642/health` | Version `0.22.4`; `status: ok` |
 | ComfyUI | `http://127.0.0.1:8188/system_stats` | Version `0.40.0`; two CUDA devices reported |
 
@@ -43,11 +43,13 @@ Earlier media and tool experiments likewise do not establish that a fresh agent 
 
 ## Release evidence still required
 
-- [ ] Inventory the GPU driver, WSL distribution, kernel, Podman, container image digests, and exact launch configuration.
-- [ ] Record Open WebUI and all adapter versions, dependency locks, installation sources, and compatible version combinations.
+- [x] Record the GPU driver, WSL distribution/kernel, Podman version, sandbox image digest, and selected active runtime details in the dependency baseline.
+- [ ] Resolve the active gateway's separate Python runtime, local source changes, launch wrappers, and Podman socket/storage context into a reproducible recipe.
+- [ ] Complete adapter versions, verified dependency locks, acquisition sources, and compatible version combinations; observed package inventories are now available.
 - [ ] Identify the selected model artifact, digest, quantization, context configuration, download source, and applicable license.
 - [ ] Document all host-to-container storage mappings and verify artifact creation at the intended host destination.
-- [ ] Publish sanitized configuration examples and a complete installation guide; no complete guide or installer is included yet.
+- [x] Publish a sanitized draft configuration example and structural schema.
+- [ ] Convert the configuration draft into a tested installation guide; no complete guide or installer is included yet.
 - [ ] Define supported hardware and operating-system profiles using measured tests; no minimum hardware specification is validated yet.
 - [ ] Run a small, published end-to-end task suite with independent grading and bounded repair reporting.
 - [ ] Test local inference with external network access disabled after installation and model acquisition.

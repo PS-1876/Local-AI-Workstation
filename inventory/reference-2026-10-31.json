@@ -1,0 +1,476 @@
+{
+  "schema_version": "1.0",
+  "title": "Local AI Workstation observed dependency baseline",
+  "observed_date_local": "2026-10-31",
+  "timezone": "America/Los_Angeles",
+  "status": "partial_observed_snapshot",
+  "purpose": "Describe the inspected reference environment and the remaining reproduction gaps.",
+  "installation_lock": false,
+  "clean_install_verified": false,
+  "qualification_note": "Versions and files were observed on one configured workstation. This is not a supported minimum, complete dependency set, compatibility guarantee, model-fit recommendation, or installation recipe.",
+  "scope": [
+    "Read-only hardware, service, installed-package, source and targeted model-file metadata inspection.",
+    "No inference, media job, model load or unload, service restart, installation or configuration change.",
+    "Private paths, account details, raw configuration, wrapper source and secret contents are excluded."
+  ],
+  "hardware": {
+    "operating_system": "Microsoft Windows 11 Education",
+    "os_version": "10.0.26300",
+    "build": "26300",
+    "cpu": "AMD Ryzen 9 9900X 12-Core Processor",
+    "physical_cores": 12,
+    "logical_processors": 24,
+    "os_visible_physical_ram_gib": 61.07,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 5080",
+        "memory_mib": 16303,
+        "driver": "617.42"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5080",
+        "memory_mib": 16303,
+        "driver": "617.42"
+      }
+    ],
+    "installed_ram_modules": "not inventoried"
+  },
+  "host_tools": {
+    "powershell_version": "7.6.5",
+    "powershell_edition": "Core",
+    "git_version": "2.55.0.windows.5"
+  },
+  "core": {
+    "ollama": {
+      "version_reported": "0.40.13",
+      "version_source": "local version endpoint",
+      "implementation_process_name": "ollama.exe",
+      "network_status": "Network topology and bindings require qualification; no network isolation claim is made.",
+      "selected_local_model": {
+        "tag": "qwen3.6-35b-heretic:latest",
+        "api_reported_digest": "16a40cd6f9365c840caea50337d80cd741e26180d50a01f496bb9d3a559a413f",
+        "digest_verification": "API-reported model digest; not independently verified as a local manifest or weight checksum.",
+        "api_reported_size_bytes": 22136431022,
+        "format": "gguf",
+        "architecture": "qwen35moe",
+        "basename_metadata": "Qwen3.6",
+        "finetune_metadata": "uncensored-heretic",
+        "parameter_count_metadata": 34660610688,
+        "parameter_size_reported": "34.7B",
+        "quantization": "Q4_K_M",
+        "configured_context_tokens": 65536,
+        "metadata_max_context_tokens": 262144,
+        "context_note": "Metadata maximum is not a measured runtime capacity or recommended context for another machine.",
+        "capabilities_reported": [
+          "completion",
+          "vision",
+          "tools",
+          "thinking"
+        ],
+        "license_text_present_in_show_response": false,
+        "resident_model_count_at_inspection": 0,
+        "inference_tested": false,
+        "local_blob_reference": {
+          "filename": "sha256-b82f9f2155eb9c07139d48cc3a37880cf9d0edcca345ef6ad829b62941ccbb82",
+          "bytes": 21233608512,
+          "integrity_status": "Existing local file and filename-derived digest only; full weight hash was not recomputed."
+        },
+        "public_acquisition_provenance": {
+          "base_repository": null,
+          "base_revision": null,
+          "transformation_tool_revision": null,
+          "transformation_parameters": null,
+          "quantized_download_url": null,
+          "license": null,
+          "status": "unresolved"
+        },
+        "selected_manifest_status": "Not located during the bounded inventory; do not infer it from the API digest or another model's manifest."
+      },
+      "separate_stock_manifest": {
+        "tag": "qwen3.6:35b-a3b",
+        "manifest_sha256": "e967ed89e98e312f71c780ddddfda26d3084f41a6aa5ea7b3eca7e9f94d08b96",
+        "manifest_hash_recomputed": true,
+        "declared_model_layer_digest": "sha256:d372de8e934898a59e6ccfabc3368474711384d8f1fd4d22d87a3f0a45400cdc",
+        "declared_model_layer_size_bytes": 21718480960,
+        "declared_projector_layer_digest": "sha256:a62390d25b4b4a2d8afd7cc3c90021c11935c1fdd48d7cb0723ab71cd02a598e",
+        "declared_projector_layer_size_bytes": 902821728,
+        "license_layer_present": true,
+        "large_layer_hashes_recomputed": false,
+        "relationship_to_custom_model": "not established"
+      }
+    },
+    "open_webui": {
+      "version_reported": "0.11.4",
+      "health_endpoint_responded": true,
+      "installed_distribution_version": "0.11.4",
+      "inspected_environment_python": "3.12.10",
+      "requires_python": "<3.13.0a1,>=3.11",
+      "installed_package_inventory": "open-webui-packages.json",
+      "installed_distribution_count": 245,
+      "package_installer_metadata": "pip",
+      "original_artifact_url": null,
+      "original_artifact_hash": null,
+      "direct_url_metadata_present": false,
+      "license": {
+        "name": "Open WebUI License",
+        "files": [
+          "LICENSE",
+          "LICENSE_HISTORY",
+          "LICENSE_NOTICE"
+        ],
+        "status": "Installed license text includes branding conditions; compatibility and redistribution review incomplete."
+      },
+      "local_launcher_fingerprint": {
+        "filename": "run-webui.py",
+        "sha256": "e4fc4d3d8e825c1e2dbd171233dfe4cd3133dc1ec23ae9f29780cf7c8e636b0b",
+        "source_provenance": "unresolved local integration; source not included"
+      },
+      "local_speech_constraint": {
+        "requirement": "av==16.1.0",
+        "observed_av": "16.1.0",
+        "observed_faster_whisper": "1.2.1",
+        "status": "Existing local constraint; compatibility behavior not retested."
+      }
+    }
+  },
+  "agent": {
+    "wsl": {
+      "version": "3.0.3.0",
+      "reported_kernel_version": "6.18.54.1-1",
+      "active_kernel": "6.18.54.1-microsoft-standard-WSL2",
+      "linux_distribution": "Ubuntu 24.04.5 LTS",
+      "linux_version_id": "24.04",
+      "podman_version": "6.1.3",
+      "openshell_version": "0.0.116",
+      "node_on_default_linux_path": false,
+      "npm_version_output": "11.19.0",
+      "node_runtime_status": "Native Linux Node versus Windows interop provenance remains unresolved."
+    },
+    "container_discovery": {
+      "status": "A running sandbox was found using an existing Podman API socket.",
+      "default_podman_queries_sufficient": false,
+      "reproduction_gap": "Document the socket, storage and service context without relying on the original account layout."
+    },
+    "container_image": {
+      "reference": "ghcr.io/nvidia/nemoclaw/hermes-sandbox@sha256:afe428ec04ff4cbc3c397756eb44224bd5212a4f7044928bed855a9f093761de",
+      "image_id": "0f4c8e907f4dece09c8094d32aa4259d3061a1c4ecc339e1e9725a156cd7bb86",
+      "digest": "sha256:afe428ec04ff4cbc3c397756eb44224bd5212a4f7044928bed855a9f093761de",
+      "architecture": "amd64",
+      "os": "linux",
+      "digest_scope": "Observed image identity only; current source and launchers are modified in the running container and are not fully specified by this digest."
+    },
+    "hermes": {
+      "health_version": "0.22.4",
+      "health_status": "ok",
+      "source": {
+        "upstream_url": "https://github.com/NousResearch/hermes-agent.git",
+        "commit": "4d04303818b61bf3aa09278af48356315515965b",
+        "describe": "v0.22.4-dirty",
+        "tracked_dirty": true,
+        "tracked_changed_count": 1,
+        "changed_tracked_files": [
+          {
+            "relative_file": "tools/file_tools.py",
+            "sha256": "882733d3ecf53798d385331f80c9e5327ae94c9a5ddf032f8b69475ee7b924af"
+          }
+        ],
+        "upstream_source_evidence": "URL and revision read from local Git metadata; remote availability and license not independently checked.",
+        "untracked_files_inventoried": false
+      },
+      "runtime": {
+        "default_container_python": "3.13.5",
+        "default_python_distribution_metadata": "0.21.3",
+        "source_venv_python_family": "3.13",
+        "source_venv_distribution_metadata": "0.21.3",
+        "active_gateway_python": "3.14.7",
+        "active_interpreter_package_metadata_resolved": false,
+        "discrepancy": "Health/source report 0.22.4, default/source-venv distribution metadata reports 0.21.3, and the active gateway uses a separate Python 3.14.7 interpreter.",
+        "standalone_python_acquisition_source": null
+      },
+      "dependency_manifests": [
+        {
+          "file": "pyproject.toml",
+          "sha256": "92b3277631a516ad9ad569d839b4433f1f9ea47ceebf0aaeb7d7a5358bdecae2",
+          "bytes": 43795,
+          "project_name": "hermes-agent",
+          "raw_declared_version": "0.0.0",
+          "requires_python": ">=3.11,<3.15",
+          "direct_dependency_count": 46,
+          "optional_dependency_groups_present": true,
+          "install_reproduction_verified": false
+        },
+        {
+          "file": "uv.lock",
+          "sha256": "97367c6bf21aa3711bae5aa0d0662d9a68585a03a2a9d11cd9b17393435c4f91",
+          "bytes": 1216306,
+          "format_version": 1,
+          "revision": 3,
+          "requires_python": ">=3.11, <3.15",
+          "package_count": 328,
+          "install_reproduction_verified": false
+        }
+      ],
+      "local_launcher_fingerprints": [
+        {
+          "filename": "hermes",
+          "sha256": "1d6e6e46de34ccd5904e1a1add45eca536790902e610a46303a1811bb926eb81",
+          "bytes": 34113,
+          "source_included": false
+        },
+        {
+          "filename": "hermes.real",
+          "sha256": "fc8c2755df85f6bee1621add41933971625c92c8ef80d853d75e519445841e3d",
+          "bytes": 592,
+          "source_included": false
+        }
+      ],
+      "configuration_observation": {
+        "model_tags": [
+          "qwen3.6-35b-heretic:latest"
+        ],
+        "provider_labels": [
+          "auto",
+          "ollama-local",
+          "custom"
+        ],
+        "context_tokens": 65536,
+        "route_tested": false,
+        "note": "Selected non-secret scalars; provider labels occur in separate sections and do not prove the active route."
+      },
+      "license_status": "not independently reviewed"
+    },
+    "nemoclaw": {
+      "source_url": "https://github.com/NVIDIA/NemoClaw.git",
+      "commit": "6f3cced4230ae9660c049cc11804daf37797c595",
+      "tracked_dirty": false,
+      "untracked_files_inventoried": false,
+      "package_name": "nemoclaw",
+      "package_version": "0.1.0",
+      "node_engine_requirement": ">=22.19.0",
+      "package_json_sha256": "e0f3f250954f32c1a13704708a82e85a28e7ed66960d8618ba44b0c1ad7cec45",
+      "package_lock_sha256": "69923a26a691c044a15a23fab46bd12a04bf3f2ce4efa33e2eecaf92dc84279f",
+      "package_lock_format": 3,
+      "locked_package_entries": 613,
+      "declared_runtime_dependencies": {
+        "@aws-sdk/client-bedrock-runtime": "3.1046.0",
+        "@oclif/core": "^4.10.5",
+        "ajv": "^8.17.0",
+        "execa": "^9.6.1",
+        "js-yaml": "^4.3.2",
+        "p-retry": "^4.6.2",
+        "qrcode-terminal": "^0.12.0",
+        "smol-toml": "1.8.0",
+        "typebox": "1.1.38",
+        "undici": "8.10.0",
+        "yaml": "2.8.3"
+      },
+      "source_evidence": "Local Git and package metadata; no clean deployment linking this checkout, OpenShell binary, sandbox image and local wrappers is established.",
+      "license_status": "not independently reviewed"
+    },
+    "local_service_copy_fingerprints": [
+      {
+        "filename": "nemo-gateway.service",
+        "sha256": "68e34132391ea0f951e4aa75c7248efaf0d22752a474c1ac100e9a2683f8b23d",
+        "source_included": false
+      },
+      {
+        "filename": "nemo-hermes-api.service",
+        "sha256": "022bc989f4f55a76d33713a16458db5ffe6345a64dfa635461b5ebadbfd7ff30",
+        "source_included": false
+      },
+      {
+        "filename": "nemo-local-tools.service",
+        "sha256": "1418886b11a8ccb17a71ce89d07d23f749b4d25ffd3fde6174cff0741eaf0031",
+        "source_included": false
+      }
+    ]
+  },
+  "media": {
+    "comfyui": {
+      "version": "0.40.0",
+      "source_url": "https://github.com/Comfy-Org/ComfyUI.git",
+      "commit": "3541246a9c997f4b8c32f9f88f3c985d02021c79",
+      "tracked_dirty": false,
+      "source_evidence": "Local Git metadata; remote source and compatibility not independently verified.",
+      "runtime_python": "3.13.12",
+      "torch_reported": "2.12.1+cu130",
+      "package_inventory": "comfyui-packages.json",
+      "source_required_distributions_missing_metadata": [
+        "comfyui-frontend-package==1.55.17",
+        "comfyui-workflow-templates==0.11.82",
+        "comfyui-embedded-docs==0.5.14",
+        "comfy-kitchen==0.2.37",
+        "comfy-aimdo==0.5.6"
+      ],
+      "pip_check": {
+        "passed": true,
+        "scope": "Installed distribution metadata only; missing source requirements and workflow compatibility are not established."
+      },
+      "cuda_devices_enumerated": 2,
+      "launch_cuda_device_all_flag_present": false,
+      "device_note": "Enumeration does not establish workload placement or memory pooling; actual MultiGPU behavior remains to qualify.",
+      "license": {
+        "text_identification": "GPL-3.0 text; exact grant scope to review",
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+        "status": "local license text inspected; not a compatibility review"
+      },
+      "custom_nodes": [
+        {
+          "name": "ComfyUI-GGUF",
+          "git_checkout": false,
+          "source_version": "2.0.0",
+          "commit": null,
+          "source_url": null,
+          "declared_public_source_urls": {
+            "Repository": "https://github.com/city96/ComfyUI-GGUF"
+          },
+          "tracked_dirty": null,
+          "license": {
+            "text_identification": "Apache-2.0 text",
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "status": "local license text inspected; not a compatibility review"
+          },
+          "declared_dependencies": [
+            "gguf>=0.13.0",
+            "sentencepiece",
+            "protobuf"
+          ],
+          "changed_tracked_files": [],
+          "source_fingerprints": [
+            {
+              "relative_file": "__init__.py",
+              "sha256": "7ba473d8254a2867534565bb0b2ae194f1c55d5c2c00e30b6dbaf76be7d7a6b7"
+            },
+            {
+              "relative_file": "dequant.py",
+              "sha256": "215369438d96c372c09eb8701eec3c3b0348084c96dd3ea83872601ebed42017"
+            },
+            {
+              "relative_file": "loader.py",
+              "sha256": "ffff39d209ce22654e67378b80c6a3ca3d349cf8f00ec267085bd16e194730c2"
+            },
+            {
+              "relative_file": "nodes.py",
+              "sha256": "16be3b08b13de6279fc432addc628320019fcb24963cbc6b52b248de8f06316e"
+            },
+            {
+              "relative_file": "ops.py",
+              "sha256": "b927e24a7b00c181e9511900fb5afde45464793cf460e1d39a5e736ba093ce64"
+            }
+          ],
+          "source_code_included": false,
+          "reproducibility_note": "Exact upstream revision or archive provenance is unresolved."
+        },
+        {
+          "name": "ComfyUI-MultiGPU",
+          "git_checkout": true,
+          "source_version": "2.6.4",
+          "commit": "37a73feda5804045e4f39d8c640905d62a2169d1",
+          "source_url": "https://github.com/pollockjj/ComfyUI-MultiGPU",
+          "declared_public_source_urls": {
+            "Repository": "https://github.com/pollockjj/ComfyUI-MultiGPU"
+          },
+          "tracked_dirty": true,
+          "license": {
+            "text_identification": "GPL-3.0 text; exact grant scope to review",
+            "sha256": "81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8",
+            "status": "local license text inspected; not a compatibility review"
+          },
+          "declared_dependencies": [],
+          "changed_tracked_files": [
+            {
+              "relative_file": "__init__.py",
+              "sha256": "dac666389b6e6d4a8e68c69782a78f5d90a873de639d8acf45d740d6e0cf79d1"
+            },
+            {
+              "relative_file": "p2p_registry.py",
+              "sha256": "ad6c414e90aa2760210c948e772ba4315418a3c27015498a6ab729465303eb06"
+            }
+          ],
+          "source_fingerprints": [],
+          "source_code_included": false,
+          "reproducibility_note": "Commit plus local changes require reviewed packaging."
+        },
+        {
+          "name": "ComfyUI-Render-Coordinator",
+          "git_checkout": false,
+          "source_version": null,
+          "commit": null,
+          "source_url": null,
+          "declared_public_source_urls": {},
+          "tracked_dirty": null,
+          "license": {
+            "status": "not identified"
+          },
+          "declared_dependencies": [],
+          "changed_tracked_files": [],
+          "source_fingerprints": [
+            {
+              "relative_file": "__init__.py",
+              "sha256": "308400b7778e544f5e48a2b745070f36ceca31bf1533c5f6c97ae39610172c31"
+            }
+          ],
+          "source_code_included": false,
+          "reproducibility_note": "Exact upstream revision or archive provenance is unresolved."
+        }
+      ]
+    },
+    "comfyui_mcp": {
+      "git_checkout": false,
+      "python": "3.12.10",
+      "mcp": "1.30.0",
+      "httpx": "0.28.1",
+      "package_inventory": "comfyui-mcp-packages.json",
+      "declared_requirements": [
+        "mcp==1.30.0",
+        "httpx==0.28.1"
+      ],
+      "stored_lock_clean_install_verified": false,
+      "source_fingerprints": [
+        {
+          "relative_file": "server.py",
+          "sha256": "15a4e843d5f68c4ad0f4a007f49501348ce4908d9542613a68ebe9a49964550e",
+          "bytes": 2189
+        },
+        {
+          "relative_file": "smoke_test.py",
+          "sha256": "077282a61fd6cc3f1b16d4e386d4ca8ea07ba6b9615d6814c42e5c9da03a2b8e",
+          "bytes": 3291
+        },
+        {
+          "relative_file": "requirements.txt",
+          "sha256": "559dc198bf9693c8de00f287f800379b22abd587056d6420ef655f1863e9290a",
+          "bytes": 26
+        },
+        {
+          "relative_file": "requirements.lock.txt",
+          "sha256": "43e0b8de5b4d38deb013ef7ef65ac75bd7483dd73c41d2c1b1f510b153473816",
+          "bytes": 579
+        }
+      ],
+      "source_code_included": false,
+      "public_source_repository": null,
+      "license_status": "No LICENSE file found; original-code license not yet chosen",
+      "transport": "stdio according to existing configuration; handshake not performed in this inventory.",
+      "pip_check_passed": true
+    },
+    "model_file_inventory": "media-model-files.json",
+    "selected_model_file_count": 21,
+    "model_file_scope": "Targeted filenames and sizes only; not a required download set, complete inventory, integrity verification or provenance record."
+  },
+  "gaps": [
+    "Publish a complete dependency and artifact acquisition manifest; observed versions alone are not a reproducible installation lock.",
+    "Resolve custom Qwen base, transformation, quantization and license provenance; its local tag does not identify a public upstream release.",
+    "Independently verify large model integrity and exact download sources before recommending redistribution or automated acquisition.",
+    "Resolve Open WebUI package acquisition artifacts and decide which of its 245 installed distributions belong to supported profiles.",
+    "Qualify network topology, service bindings, tool permissions and offline behavior; no isolation claim follows from local health checks.",
+    "Capture and review local Hermes and MultiGPU changes and local launch/adapter code; source commits and image digests alone are insufficient.",
+    "Resolve the Hermes active interpreter and distribution-metadata discrepancy and the Node/npm interop dependency.",
+    "Document the Podman socket/storage context and host/container mappings using configurable locations.",
+    "Resolve the absent distribution metadata for five ComfyUI source requirements despite the passing installed-package pip check.",
+    "Trace non-Git custom-node versions and licenses and review local Render-Coordinator/MCP source for publication.",
+    "Qualify image/video sample workflows, model and context fit, GPU placement and resource transitions with independently checked outputs.",
+    "Measure download size, peak installation space and operating resources for each proposed profile.",
+    "Prove a clean installation and bounded end-to-end task suite; none was performed for this snapshot."
+  ]
+}

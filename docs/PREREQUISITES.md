@@ -1,6 +1,6 @@
 # Build prerequisites
 
-This checklist defines the information needed before a reproducible installation can be offered. It is not yet a complete installation guide or a hardware shopping list.
+This checklist defines the information needed before a reproducible installation can be offered. It is not yet a complete installation guide or a hardware shopping list. The [dependency inventory](DEPENDENCIES.md) now records observed versions and unresolved local changes; the [model guide](MODEL-GUIDE.md) provides initial GPU-tier candidates to qualify.
 
 ## Reference hardware
 
@@ -20,13 +20,13 @@ The existing machine reports 61.07 GiB of physical RAM and two GPUs with 16,303 
 | Model runtime | A qualified Ollama release and selected model | Exact digest, quantization, context and source terms |
 | User interface | A qualified Open WebUI release and its runtime | Version, dependency lock, local onboarding, backup procedure |
 | Agent | Hermes and the selected local tool/inference integration | Complete launch, dependency, permission and path configuration |
-| Media option | ComfyUI plus only the custom nodes and models used by the selected sample | Pinned versions, model terms, sample fixture and output checks |
+| Full-workstation media | ComfyUI plus the custom nodes and models used by selected image and video samples | Pinned versions, model terms, sample fixtures and output checks |
 | Connectivity | Initial access to approved download sources; optional later online tasks | Offline operation test after dependencies are present |
 | Credentials | User-created local credentials where required; optional third-party credentials only for selected integrations | Supported secure local storage and onboarding behavior |
 
 ## Decisions the future setup flow should collect
 
-1. Which capabilities to install: Core, Agent, optional Media.
+1. Full workstation (Core + Agent + ComfyUI images/videos) or a smaller Core/Core-Agent subset.
 2. Where to put programs, models, workspace data, and output files.
 3. Which tested model profile to use for the detected hardware.
 4. Whether services should start manually or at sign-in.

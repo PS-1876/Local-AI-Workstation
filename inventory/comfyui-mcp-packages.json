@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "observed_date_local": "2026-10-31",
+  "timezone": "America/Los_Angeles",
+  "installation_lock": false,
+  "clean_install_verified": false,
+  "component": "ComfyUI MCP bridge",
+  "python_version": "3.12.10",
+  "scope": "Selected live version observations and a previously stored lock listing; the stored listing was not reproduced in a clean environment.",
+  "observed_packages": [
+    {
+      "name": "mcp",
+      "version": "1.30.0"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1"
+    }
+  ],
+  "declared_requirements": [
+    "mcp==1.30.0",
+    "httpx==0.28.1"
+  ],
+  "stored_lock_entries": [
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "name": "httpx-sse",
+      "version": "0.4.3"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "mcp",
+      "version": "1.30.0"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.1"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.0"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.15.0"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.0"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.15.1"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32"
+    },
+    {
+      "name": "pywin32",
+      "version": "312"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.5.0"
+    },
+    {
+      "name": "starlette",
+      "version": "1.7.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0"
+    }
+  ],
+  "stored_lock_sha256": "43e0b8de5b4d38deb013ef7ef65ac75bd7483dd73c41d2c1b1f510b153473816",
+  "stored_lock_clean_install_verified": false,
+  "artifact_sources_and_hashes_included": false,
+  "pip_check_passed": true
+}

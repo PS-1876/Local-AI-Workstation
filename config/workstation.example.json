@@ -1,0 +1,37 @@
+{
+  "$schema": "../schemas/workstation.schema.json",
+  "schemaVersion": "0.1",
+  "status": "design-draft",
+  "installationProfile": "full",
+  "paths": {
+    "programRoot": "C:\\LocalAI",
+    "modelsRoot": "D:\\LocalAI\\Models",
+    "workspaceRoot": "D:\\LocalAI\\Workspace",
+    "outputsRoot": "D:\\LocalAI\\Outputs",
+    "stateRoot": "D:\\LocalAI\\State"
+  },
+  "hostServiceUrls": {
+    "ollama": "http://127.0.0.1:11434",
+    "openWebUI": "http://127.0.0.1:8080",
+    "hermes": "http://127.0.0.1:8642",
+    "comfyUI": "http://127.0.0.1:8188"
+  },
+  "generalModel": {
+    "familyPreference": "qwen",
+    "variant": "standard",
+    "tag": null,
+    "digest": null,
+    "contextTokens": null,
+    "maxConcurrentRequests": 1
+  },
+  "media": {
+    "imageWorkflowProfile": null,
+    "videoWorkflowProfile": null
+  },
+  "operation": {
+    "inferencePolicy": "local-only",
+    "heavyGpuWorkloads": "sequential",
+    "startAtSignIn": false,
+    "externalPublishing": "manual"
+  }
+}

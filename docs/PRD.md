@@ -1,13 +1,13 @@
 # Local AI Workstation product requirements
 
-Version: 0.1 draft  
+Version: 0.2 draft  
 Date: October 31, 2026  
 Stage: reference workstation to reproducible setup  
 Status: requirements describe intended behavior unless explicitly identified as an observation.
 
 ## 1. Product purpose
 
-Local AI Workstation helps individuals build and operate their own local AI environment. It brings local language models, an agent runtime, tool access, project continuity, and optional creative workflows into a documented system with verifiable results.
+Local AI Workstation helps individuals build and operate their own local AI environment. The full workstation integrates local language models, an agent runtime, tool access, project continuity, and ComfyUI for local image and video creation in a documented system with verifiable results. Smaller profiles support constrained hardware or staged installation.
 
 The central product outcome is replication: a person who did not build the original workstation can determine what they need, follow the published process, and verify that their own setup works. The eventual setup script should ask for only the choices that depend on the user's machine or preferences.
 
@@ -43,13 +43,13 @@ The initial audience is technically comfortable Windows users, independent resea
 
 **Documentation baseline:** publish the PRD, architecture, reference status, prerequisite checklist, and roadmap. This release makes the project understandable and reviewable.
 
-**Guided reference build:** publish exact dependencies, sanitized configuration, a written setup procedure, and small acceptance workflows. Prove the procedure in a separate clean environment before calling it reproducible.
+**Guided reference build:** publish exact dependencies, sanitized configuration, a written setup procedure, and small acceptance workflows. Core/Agent validation is an intermediate milestone; the full workstation also requires image and video generation plus the resource transition between agent and media work. Prove the selected profile's procedure in a separate clean environment before calling it reproducible.
 
 **Installer release:** automate the proven procedure with preflight checks, resumable steps, diagnostics, and safe handling of existing installations. Expand supported hardware only after testing it.
 
 ### Initial exclusions
 
-The first reproducible release does not promise universal hardware support, unrestricted desktop autonomy, simultaneous heavy language and media workloads, model training, automatic cloud fallback, remote multi-user hosting, or automatic publishing to external accounts. Media production and browser automation are modules with separate acceptance criteria.
+The first reproducible release does not promise universal hardware support, unrestricted desktop autonomy, simultaneous heavy language and media workloads, model training, automatic cloud fallback, remote multi-user hosting, or automatic publishing to external accounts. Image and video production are required for the full profile; browser automation remains a later module with separate acceptance criteria.
 
 ## 4. Product profiles
 
@@ -57,9 +57,11 @@ The first reproducible release does not promise universal hardware support, unre
 
 **Agent:** the core profile plus Hermes, its required Linux/container environment, selected local tools, an explicit writable workspace, and independent artifact verification. The current Windows/WSL/Podman and NemoClaw-related arrangement must be inventoried before it becomes a supported installation recipe.
 
-**Media:** selected ComfyUI workflows and dedicated speech, transcription, OCR, or other utility components as needed. Install only the components chosen for a supported sample workflow. Media jobs share finite hardware resources with general model work.
+**Media:** selected ComfyUI image and video workflows and dedicated speech, transcription, OCR, or other utility components as needed. Install only the components chosen for supported sample workflows. Media jobs share finite hardware resources with general model work.
 
-Profiles are product packaging proposals. The current repository contains documentation for them, not functioning profile installers.
+**Full:** Core + Agent + Media, the main product and installer target. A smaller profile may be useful on limited hardware, but its completion does not satisfy the full-workstation acceptance gate. Standard and Heretic general-model variants are selectable profiles within this repository; a separate code repository is unnecessary unless a distinct conversion/research tool is developed.
+
+Profiles are product packaging proposals. The repository contains dependency snapshots and a draft configuration contract for them, not functioning profile installers. See the [model guide](MODEL-GUIDE.md), [dependency baseline](DEPENDENCIES.md), and [configuration contract](CONFIGURATION.md).
 
 ## 5. Setup experience
 
@@ -78,7 +80,7 @@ The intended flow is:
 | Item | Intended handling |
 | --- | --- |
 | Hardware and current dependencies | Detect automatically; show the findings. |
-| Capability profile | User chooses Core, Agent, and optional Media. |
+| Capability profile | Full workstation is the main target; user may choose a smaller Core or Core/Agent subset. |
 | Program, model, workspace, and output locations | Propose valid locations; let the user change them. Never assume a particular drive letter or username. |
 | Model and context | Offer only profiles with measured fit; default to the qualified general model for that hardware. |
 | Ports | Propose available local ports and persist the selected values. |
@@ -102,8 +104,8 @@ Priority P0 is required for the first guided reproducible build; P1 is required 
 | FR-06 | P0 | Define permitted tool operations, accessible folders, and authorization boundaries. | A permitted workspace operation succeeds; a test operation outside the configured scope is blocked or requires explicit approval. External text cannot expand permissions. |
 | FR-07 | P0 | Separate public project specification from private runtime state and project memory. | A fresh session retrieves a seeded project fact with provenance; conflicting updates are detected without silent overwrite. The repository contains no private runtime memory. |
 | FR-08 | P0 | Keep general inference Qwen-first on the reference build; add specialist routing only after measured benefit. | A selected model/context is recorded, and any new general-model route includes an accuracy, latency, and resource comparison. No specialist switching is required merely because a model is installed. |
-| FR-09 | P0 for Media | Provide an explicit transition between general inference and heavy media work. | Save state, release the required resources, complete a selected media job, and resume general work. Record resource use and any interrupted jobs. |
-| FR-10 | P0 for Media | Package one small redistributable sample workflow with all dependencies and independent output checks. | The output exists, decodes, and meets specified technical properties. Human review is separately recorded where quality or synchronization matters. |
+| FR-09 | P0 for Full | Provide an explicit transition between general inference and heavy media work. | Save state, release the required resources, complete a selected media job, and resume general work. Record resource use and any interrupted jobs. |
+| FR-10 | P0 for Full | Package one small redistributable image workflow and one video workflow with all dependencies and independent output checks. | Image and video outputs exist, decode, and meet their specified dimensions, frame count, and duration as applicable. Human review is separately recorded where quality or synchronization matters. |
 | FR-11 | P1 | Perform a read-only installation preflight and generate an installation plan before mutations. | Unsupported hardware, missing virtualization, insufficient disk capacity, invalid paths, and occupied ports produce actionable results with no partial installation. |
 | FR-12 | P1 | Implement resumable, repeatable installation using explicit completed-step state. | A second run makes no unintended changes; recovery from an interrupted download and an interrupted configuration step completes without duplicate services or lost user data. |
 | FR-13 | P1 | Detect and preserve existing installations and user assets. | An existing model/workflow fixture remains unchanged. Incompatible dependencies trigger a clear choice or stop; no silent overwrite, uninstall, disk initialization, or drive migration occurs. |
@@ -131,7 +133,7 @@ Priority P0 is required for the first guided reproducible build; P1 is required 
 | AT-01 Core offline task | With dependencies installed and external network unavailable, submit a small synthetic local document with predetermined facts and questions. | Local inference completes and answers match the fixture's independently defined checks. |
 | AT-02 Agent artifact | Ask the agent to implement a bounded file-processing function from a published specification in its allowed workspace. | The host file exists, external targeted and randomized checks pass, and attempts/repairs are recorded. |
 | AT-03 Project continuity | Seed a synthetic project decision, end the session, and retrieve it from a new session; simulate a conflicting revision. | Correct retrieval with provenance and visible conflict handling; no silent lost update. |
-| AT-04 Media module | Run a small licensed sample, checking dependencies and outputs; transition from general inference and back. | Technical output checks pass, task state survives, and any human quality review remains explicit. |
+| AT-04 Full image/video workflow | Run a licensed or synthetic image fixture and a short video fixture with pinned workflows; transition from general inference to media and back. | Both outputs pass independent technical checks, task state survives, and any human quality review remains explicit. |
 | AT-05 Installer recovery | Run preflight; install; interrupt a download/configuration step; resume; rerun; test an existing-data fixture. | Every required step finishes or clearly reports its blocker, and existing data remains unchanged. |
 | AT-06 Independent reproduction | A second person or a separate clean environment follows only the published guide/configuration for the selected profile. | All required tests for that profile pass without undocumented intervention; any intervention becomes a documented defect and retest. |
 
@@ -160,11 +162,11 @@ The repository is the proposed source of truth for public product requirements. 
 | Model fit changes with context and concurrent work | Qualify profiles using measured memory and workload behavior. |
 | Public code/configuration may include private material | Use explicit file selection and inspect candidate commits before publication. |
 | Clean-machine validation requires suitable hardware | Arrange a separate installation or external tester without dismantling the working reference machine. |
-| Scope expands before the core is reproducible | Release Core and Agent first; qualify Media and desktop automation separately. |
+| Scope expands before the core is reproducible | Prove Core/Agent as an intermediate step, then image/video and GPU transitions before claiming the full setup. Qualify desktop automation later. |
 | Original-material license not chosen | Select and add a license before describing the project as open source. |
 | Minimum supported hardware and disk space are unknown | Publish measured requirements after the dependency manifest and profile tests exist. |
 | Installer packaging and support policy are undecided | Start from a proven PowerShell-oriented guided procedure; choose final packaging after reproduction. |
 
 ## 12. Immediate next milestone
 
-Complete a sanitized dependency manifest and a guided Core-plus-Agent installation procedure, then prove it outside the existing configured workstation. Automate that proven procedure next. See the [roadmap](ROADMAP.md) for the work items and exit conditions.
+Resolve the gaps in the sanitized dependency baseline and write a guided Core-plus-Agent installation procedure. Complete image/video integration and GPU transitions for the full setup, then prove that procedure outside the existing configured workstation and automate it. See the [roadmap](ROADMAP.md) for the work items and exit conditions.
