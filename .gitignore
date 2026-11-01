@@ -1,0 +1,55 @@
+# Local credentials and private configuration
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.yaml
+*.local.yml
+*.pem
+*.key
+credentials*
+secrets*
+
+# Runtime state and private project material
+/private/
+/local/
+/state/
+/logs/
+/data/
+/models/
+/outputs/
+/backups/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db-wal
+*.db-shm
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Model weights and large runtime artifacts
+*.gguf
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.bin
+*.vhdx
+*.tar
+*.zip
+
+# Dependency environments and editor state
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.cache/
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
